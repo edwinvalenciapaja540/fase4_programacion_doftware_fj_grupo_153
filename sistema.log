@@ -1,0 +1,12 @@
+[13/11/2026 17:04:16] [INFO]: Prueba 1 - Prueba 1: creacio exitosa de un cliente normal -> Resultado: <__main__.Cliente object at 0x0000022276D26120>
+[13/11/2026 17:04:16] [ERROR]: Intento fallido de registro de correo: correo_malo_sin_arroba
+[13/11/2026 17:04:16] [ERROR]: Prueba 2 - prueba 2: forzando errores de correo sin arroba (Excepción controlada): El correo 'correo_malo_sin_arroba' no cumple con el formato requerido.
+[13/11/2026 17:04:16] [INFO]: Prueba 3 - Prueba 3: Creación correcta de Sala -> Resultado: <__main__.ReservaSalas object at 0x0000022276D26270>
+[13/11/2026 17:04:16] [ERROR]: Prueba 4 - Prueba 4. Error: Sala con capacidad negativa (Excepción controlada): La capacidad de personas debe ser superior a 0.
+[13/11/2026 17:04:16] [INFO]: Prueba 5 - Prueba 5. Alquiler de equipo correcto -> Resultado: <__main__.AlquilerEquipos object at 0x0000022276D26120>
+[13/11/2026 17:04:16] [ERROR]: Prueba 6 - Prueba 6. Error: Alquiler de equipo en cero horas (Excepción controlada): Las horas de alquiler no pueden ser negativas o cero.
+[13/11/2026 17:04:16] [INFO]: Prueba 7 - Prueba 7. Asesoría experta creada con éxito -> Resultado: <__main__.AsesoriaExperta object at 0x0000022276D26270>
+[13/11/2026 17:04:16] [INFO]: Prueba 8 - Prueba 8. Procesar reserva exitosa integral -> Resultado: <__main__.GestionReserva object at 0x0000022276D26120>
+[13/11/2026 17:04:16] [ERROR]: Intento fallido de registro de correo: andres_correo_malo
+[13/11/2026 17:04:16] [ERROR]: Prueba 9 - prueba 9. Error controlado en reserva (correo inválido interno) (Excepción controlada): El correo 'andres_correo_malo' no cumple con el formato requerido.
+[13/11/2026 17:04:16] [INFO]: Prueba 10 - Prueba 10. Cálculo polimórfico avanzado de tarifa -> Resultado: 297500.0
