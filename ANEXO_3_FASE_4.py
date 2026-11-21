@@ -1,4 +1,3 @@
-
 import os
 import tkinter as tk
 from tkinter import messagebox, scrolledtext
@@ -50,15 +49,14 @@ class EntidadRaiz(ABC):
 class Cliente(EntidadRaiz):
     def __init__(self, codigo: str, nombre_completo: str, email: str):
         super().__init__(codigo)
-
-        # Validar que el nombre del cliente no este vacio
         if not nombre_completo or not nombre_completo.strip():
-            registrodeeventos.registrar_evento
-            ("ERROR","Intento de registro de cliente sin nombre." )
+            registrodeeventos.registrar_evento(
+                "ERROR",
+                "Intento de registro de cliente sin nombre."
+            )
             raise ClienteNoValido("El nombre del cliente no puede estar vacio.")
-
         self.nombre_completo = nombre_completo
-        self.email = email
+        self.email = email  # Usa el setter de abajo para validar
 
     @property
     def email(self):
@@ -78,14 +76,13 @@ class Cliente(EntidadRaiz):
 class ServicioBase(EntidadRaiz, ABC):
     def __init__(self, codigo: str, titulo: str, costo_inicial: float):
         super().__init__(codigo)
-        self.titulo = titulo
-
-        # Validar que el costo del servicio no sea negativo
         if costo_inicial < 0:
-            registrodeeventos.registrar_evento
-            ("ERROR","Intento de crear un servicio con costo negativo.")
+            registrodeeventos.registrar_evento(
+                "ERROR",
+                "Intento de crear un servicio con costo negativo."
+            )
             raise ServicioNoDisponible("El costo del servicio no puede ser negativo.")
-
+        self.titulo = titulo
         self.costo_inicial = costo_inicial
 
     @abstractmethod
@@ -209,7 +206,7 @@ class AppSoftwareFJ:
         if os.path.exists("sistema.log"):
             os.remove("sistema.log")
 
-        # Las 10 operaciones combinadas (correctas e incorrectas para probar excepciones)
+        # Las 13 operaciones combinadas (correctas e incorrectas para probar excepciones)
         casos_prueba_estudiantes = [
             ("Prueba 1: creacio exitosa de un cliente normal", lambda: Cliente("C01", "Juan pérez", "juan.perez@unad.edu.co")),
             ("prueba 2: forzando errores de correo sin arroba", lambda: Cliente("C02", "María Lopez", "correo_malo_sin_arroba")),
@@ -221,9 +218,10 @@ class AppSoftwareFJ:
             ("prueba 8. Procesar reserva exitosa integral", lambda: GestionReserva("T01", Cliente("C03", "Sofia Leon", "sofia@mail.com"), AlquilerEquipos("E03", 50000.0, 3)).procesar_operacion()),
             ("prueba 9. Error controlado en reserva (correo inválido interno)", lambda: GestionReserva("T02", Cliente("C04", "Andres Gil", "andres_correo_malo"), ReservaSalas("S03", 100000.0, 4)).procesar_operacion()),
             ("prueba 10. Cálculo polimórfico avanzado de tarifa", lambda: f"Tarifa personalizada calculada: ${AsesoriaExperta('A02', 250000.0, False).calcular_tarifa_flexible(incluir_impuesto=False, porcentaje_desc=10.0)}"),
-            ("Prueba 11. Error: Cliente sin nombre", lambda: Cliente("C05", "", "cliente@mail.com")),
-            ("Prueba 12. Error: Servicio con costo negativo", lambda: AsesoriaExperta("A03", -50000.0, False)),
-            ("Prueba 13. Error: Reserva sin cliente", lambda: GestionReserva("T03", None, ReservaSalas("S04", 100000.0, 4)).procesar_operacion())]
+            ("Prueba 11: Error - Cliente sin nombre", lambda: Cliente("C05", "", "cliente@mail.com")),
+            ("Prueba 12: Error - Servicio con costo negativo", lambda: AsesoriaExperta("A03", -50000.0, False)),
+            ("Prueba 13: Error - Reserva sin cliente", lambda: GestionReserva("T03", None, ReservaSalas("S04", 100000.0, 4)).procesar_operacion()) ]
+
         for idx, (descripcion_prueba, funcion_lambda) in enumerate(casos_prueba_estudiantes, 1):
             self.escribir_consola(f"[{idx}] Evaluando: {descripcion_prueba}")
             try:
