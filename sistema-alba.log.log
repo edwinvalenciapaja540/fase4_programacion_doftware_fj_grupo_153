@@ -1,0 +1,8 @@
+[20/11/2026 22:00:57] [ERROR]: Intento fallido de registro de correo: correo_malo_sin_arroba
+[20/11/2026 22:00:57] [INFO]: Procesando ticket T01...
+[20/11/2026 22:00:57] [INFO]: Ticket T01 completado con éxito.
+[20/11/2026 22:00:57] [ERROR]: Intento fallido de registro de correo: andres_correo_malo
+[20/11/2026 22:00:57] [ERROR]: Intento de registro de cliente sin nombre.
+[20/11/2026 22:00:57] [ERROR]: Intento de crear un servicio con costo negativo.
+[20/11/2026 22:00:57] [INFO]: Procesando ticket T03...
+[20/11/2026 22:00:57] [ERROR]: Excepción atrapada en ticket T03: Faltan datos críticos en la reserva.
